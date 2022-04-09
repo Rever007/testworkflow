@@ -19,7 +19,7 @@ jobs:
             - name: executing remote ssh commands using ssh key
               uses: appleboy/ssh-action@master
               with:
-                  host: ec2-44-231-209-181.us-west-2.compute.amazonaws.com
+                  host: ${{ secrets.AWS_CEREBRO_DEV_HOST }}
                   username: bitnami
                   key: ${{ secrets.AWS_CEREBRO_SANDBOX_KEY }}
 
