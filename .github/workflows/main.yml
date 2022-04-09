@@ -20,7 +20,7 @@ jobs:
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.AWS_CEREBRO_DEV_HOST }}
-                  username: bitnami
+                  username: ${{ secrets.AWS_CEREBRO_USER }}
                   key: ${{ secrets.AWS_CEREBRO_SANDBOX_KEY }}
 
                   script: |
