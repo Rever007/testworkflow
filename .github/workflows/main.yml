@@ -24,5 +24,5 @@ jobs:
                   key: ${{ secrets.AWS_CEREBRO_SANDBOX_KEY }}
 
                   script: |
-                      cd /opt/bitnami/projects/rewards-api/
+                      cd ${{ secrets.CEREBRO_SANDBOX_PWD }}
                       bash deploy.sh dev
