@@ -1,0 +1,28 @@
+name: Deploying latest
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        timeout-minutes: 3
+
+        name: Deploy rewards API [sandbox]
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Repository checkout
+              uses: actions/checkout@v2
+
+            - name: executing remote ssh commands using ssh key
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ec2-44-231-209-181.us-west-2.compute.amazonaws.com
+                  username: bitnami
+                  key: ${{ secrets.AWS_CEREBRO_SANDBOX_KEY }}
+
+                  script: |
+                      cd /opt/bitnami/projects/rewards-api/
+                      bash deploy.sh dev
