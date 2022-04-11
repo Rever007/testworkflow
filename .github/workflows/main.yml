@@ -1,4 +1,5 @@
-name: Deploying latest
+   
+name: Deploying dev
 
 on:
     push:
@@ -9,7 +10,7 @@ jobs:
     deploy:
         timeout-minutes: 3
 
-        name: Deploy rewards API [sandbox]
+        name: Deploy rewards API [DEV]
         runs-on: ubuntu-latest
 
         steps:
@@ -21,8 +22,8 @@ jobs:
               with:
                   host: ${{ secrets.AWS_CEREBRO_DEV_HOST }}
                   username: ${{ secrets.AWS_CEREBRO_USER }}
-                  key: ${{ secrets.AWS_CEREBRO_SANDBOX_KEY }}
+                  key: ${{ secrets.AWS_CEREBRO_DEV_KEY }}
 
                   script: |
-                      cd ${{ secrets.CEREBRO_SANDBOX_PWD }}
+                      cd ${{ secrets.CEREBRO_DEV_PWD }}
                       bash deploy.sh dev
